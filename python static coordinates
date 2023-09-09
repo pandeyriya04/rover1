@@ -1,0 +1,28 @@
+import requests
+
+def get_location_info():
+    try:
+        # Use a public IP geolocation API service
+        response = requests.get("https://ipinfo.io/json")
+        data = response.json()
+
+        # Extract relevant location information
+        ip = data["ip"]
+        city = data["city"]
+        region = data["region"]
+        country = data["country"]
+        loc = data["loc"]
+
+        # Print the information
+        print(f"IP Address: {ip}")
+        print(f"City: {city}")
+        print(f"Region: {region}")
+        print(f"Country: {country}")
+        print(f"Coordinates (Latitude, Longitude): {loc}")
+
+    except Exception as e:
+        print(f"Error: {str(e)}")
+
+if __name__ == "__main__":
+    get_location_info()
+
